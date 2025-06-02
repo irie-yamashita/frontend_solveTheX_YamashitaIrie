@@ -14,15 +14,9 @@ const fetchTodos = async () => {
     console.error('Error carregant les TODOs:', error);
   }
 };
-
-// Executa `fetchTodos()` només quan el component es munta
-onMounted(() => {
-  fetchTodos();
-});
-
+fetchTodos();
 
 //Funcions
-
 const preguntarEliminar = (id) => {
     const eliminar = confirm("Estàs segur/a que vols eliminar el ToDo?");
 
@@ -39,23 +33,23 @@ const eliminarToDo = async (id) => {
     } catch (error) {
         console.error('Error eliminant el TODO:', error);
     }
-
 }
+
 </script>
 
 <template>
   <div>
     <h1>TODO List</h1>
+    <button>Afegir ToDo</button>
     <ul>
       <div v-for="todo in todos" :key="todo.id">
         <p><strong>{{ todo.titol }}</strong></p>
         <p>{{ todo.descripcio}}</p>
         <p>{{ todo.prioritat}}</p>
-        <p v-if="todo.completat == 0">Completat</p>
-        <p v-else>Pendent</p>
-        <p>{{ todo.data_creacio}}</p>
+        <p v-if="todo.completat == 0">Pendent</p>
+        <p v-else>Completat</p>
+        <p>{{ todo.data_creacio }}</p>
         <button @click="preguntarEliminar(todo.id)">Eliminar ToDo</button>
-        <button @click="preguntarEliminar(todo.id)">Modificar ToDo</button>
       </div>
     </ul>
   </div>
