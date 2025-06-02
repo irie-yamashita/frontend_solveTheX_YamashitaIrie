@@ -2,8 +2,12 @@
 
 <script setup>
     import { ref } from 'vue';
+    import { useRoute, useRouter } from 'vue-router';
 
+    const route = useRoute();
+    const router = useRouter();
     const error = ref(''); 
+    const id = Number(route.params.id);
 
     const nouTODO = ref({
         titol: '',
@@ -15,7 +19,7 @@
     // Carrego l'objecte amb les dades del TODO
     const cargarTodo = async () => {
         try {
-            const resposta = await fetch('http://localhost:3000/todos/3'); //TODO: canviar a id dinàmic
+            const resposta = await fetch(`http://localhost:3000/todos/${id}`);
             const dades = await resposta.json();;
 
             nouTODO.value.titol = dades.titol;
@@ -37,13 +41,16 @@
             error.value = 'El títol és un camp obligatori!';
         } else {
             try {
-                const resposta = await fetch('http://localhost:3000/todos/3', {
+                const resposta = await fetch(`http://localhost:3000/todos/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(nouTODO.value)
                 });
 
                 console.log("TODO modificat!");
+
+                //Redirigeixo a la pàgina principal
+                router.push('/');
             } catch (error) {
                 console.error('Error al afegir el TODO:', error);
             }

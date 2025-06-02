@@ -2,8 +2,10 @@
 
 <script setup>
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
     const error = ref(''); 
+    const router = useRouter();
     // Defineixo l'objecte nou per guardar la info del nou TODO
     const nouTODO = ref({
         titol: '',
@@ -23,6 +25,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(nouTODO.value)
                 });
+
+                router.push('/'); // tornar a la pàgina principal
             } catch (error) {
                 console.error('Error al afegir el TODO:', error);
             }

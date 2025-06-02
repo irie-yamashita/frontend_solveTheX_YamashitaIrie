@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 const todos = ref([]);
+const router = useRouter();
 
 // Consumeixo API per obtenir tots els TODO's
 const fetchTodos = async () => {
@@ -35,12 +37,20 @@ const eliminarToDo = async (id) => {
     }
 }
 
+const anarModificar = (id) => {
+  router.push({ name: 'ModificarToDo', params: { id } });
+}
+
+const anarAfegir = () => {
+  router.push('AfegirToDo');
+}
 </script>
 
 <template>
   <div>
     <h1>TODO List</h1>
-    <button>Afegir ToDo</button>
+    <button @click="anarAfegir">Afegir TODO</button>
+
     <ul>
       <div v-for="todo in todos" :key="todo.id">
         <p><strong>{{ todo.titol }}</strong></p>
@@ -50,6 +60,7 @@ const eliminarToDo = async (id) => {
         <p v-else>Completat</p>
         <p>{{ todo.data_creacio }}</p>
         <button @click="preguntarEliminar(todo.id)">Eliminar ToDo</button>
+        <button @click="anarModificar(todo.id)">Modificar ToDo</button>
       </div>
     </ul>
   </div>
