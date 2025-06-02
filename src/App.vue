@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import Footer from './components/Footer.vue'
+//import HelloWorld from './components/HelloWorld.vue';
+import Footer from './components/Footer.vue';
+import LlistaToDos from './components/LlistaToDos.vue';
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <LlistaToDos></LlistaToDos>
   <Footer date="02/06/2025"></Footer>
 </template>
 
