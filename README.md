@@ -6,7 +6,7 @@ Este proyecto es un frontend desarrollado en Vue + Vite para interactuar con la 
 + Login y Registro con token JWT almacenado en localStorage.
 + Lista de TODOs con prioridad visualmente diferenciada.
 + Edición y eliminación de TODOs solo para usuarios autenticados.
-+ Filtrar el listado por prioridad y según si la tarea está comletada o no.
++ Filtrar el listado por prioridad y según si la tarea está completada o no.
 
 ## Instalación y configuración
 1. Clonar el repositorio
