@@ -7,13 +7,27 @@ const todos = ref([]);
 const router = useRouter();
 
 const token = computed(() => localStorage.getItem('token'));
+const prioritatSeleccionada = ref("");
+const estatSeleccionat = ref("");
 
 // Consumeixo API per obtenir tots els TODO's
 const fetchTodos = async () => {
   try {
-    const resposta = await fetch('http://localhost:3000/todos');
+    let url = "http://localhost:3000/todos"; // Valor per defecte
+
+    if (prioritatSeleccionada.value && prioritatSeleccionada.value !== "Tots") {
+      url = `http://localhost:3000/todos/prioritat/${prioritatSeleccionada.value}`;
+    }
+    const resposta = await fetch(url);
     const dades = await resposta.json();
     todos.value = dades; 
+
+    todos.value= dades.filter(todo => {
+      if (estatSeleccionat.value === "true") return todo.completat;
+      if (estatSeleccionat.value === "false") return !todo.completat;
+      return true; // Mostrar tots
+    });
+
 
   } catch (error) {
     console.error('Error carregant les TODOs:', error);
@@ -66,7 +80,20 @@ const anarAfegir = () => {
       <h1 class="text-left text-3xl font-bold mb-6">TODOs</h1>
       <span v-if="token" @click="anarAfegir" class="w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer transition-colors bg-gray-300 hover:bg-green-500 text-white mb-4">+</span>
     </div>
-    
+    <select @change="fetchTodos" v-model="prioritatSeleccionada" class="px-3 py-2 border border-gray-300 rounded focus:ring focus:ring-blue-200">
+      <option value="">Tots</option>
+      <option value="alta">Alta</option>
+      <option value="mitjana">Mitjana</option>
+      <option value="baixa">Baixa</option>
+    </select>
+
+    <select @change="fetchTodos" v-model="estatSeleccionat" class="px-3 py-2 border border-gray-300 rounded focus:ring focus:ring-blue-200">
+      <option value="">Tots</option>
+      <option value="true">Completats</option>
+      <option value="false">Pendents</option>
+    </select>
+
+
 
     <div class="flex flex-wrap gap-6 mt-6">
       <div v-for="todo in todos" :key="todo.id" class="p-6 bg-gray-100 shadow-lg rounded-lg text-left transform transition-transform hover:scale-105">
