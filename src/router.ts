@@ -1,8 +1,8 @@
 // router.ts
 import { createRouter, createWebHistory } from 'vue-router';
-import LlistaToDos from './components/LlistaToDos.vue';
-import AfegirToDo from './components/AfegirToDo.vue';
-import ModificarToDo from './components/ModificarToDo.vue';
+import LlistaToDos from './views/LlistaToDos.vue';
+import AfegirToDo from './views/AfegirToDo.vue';
+import ModificarToDo from './views/ModificarToDo.vue';
 
 const routes = [
   {

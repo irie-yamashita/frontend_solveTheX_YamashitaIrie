@@ -50,7 +50,6 @@
 <template>
     <!-- v-model perquè la variable 'nouTodo' es vagi actualitzant-->
   <div>
-    <h2>Afegir nou TODO</h2>
     <input v-model="nouTODO.titol" type="text" placeholder="Títol" @blur="validaTitol" required/>
     <textarea v-model="nouTODO.descripcio" placeholder="Descripció"></textarea>
     <select v-model="nouTODO.prioritat">
