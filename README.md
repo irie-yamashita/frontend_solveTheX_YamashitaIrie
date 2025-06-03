@@ -24,6 +24,15 @@ Este proyecto es un frontend desarrollado en Vue + Vite para interactuar con la 
 4. Iniciar frontend `npm run dev`
 
 
+
+---  
+
+**Usuario**: solveTheX  
+**Contraseña**: reto
+
+---
+
+
 ## Tecnologías utilizadas
 + **Vue 3 + Vite** (estructura del frontend)
 + **Tailwind CSS** (diseño y estilos)
@@ -62,6 +71,3 @@ Este proyecto es un frontend desarrollado en Vue + Vite para interactuar con la 
 - vite.config.ts 
 ```
 
-
-# Autoría
-Irie Yamashita
