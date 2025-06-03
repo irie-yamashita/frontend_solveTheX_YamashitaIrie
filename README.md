@@ -1,5 +1,24 @@
-# Vue 3 + TypeScript + Vite
+# DOCUMENTACIÓN frontend_solveTheX_YamashitaIrie
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este proyecto es un frontend desarrollado en Vue + Vite para interactuar con la API de gestión de tareas (TODOs). Permite a los usuarios autenticarse, visualizar los TODOs y gestionarlos. Sólo aquellos que inicien sesión pueden gestionar las tareas como agregar, actualizar o eliminar. 
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+
+## Instalación y configuración
+1. Clonar el repositorio
+2. Instalar dependencias `npm install`
+3. Iniciar servidor API
+4. Iniciar frontend `npm run dev`
+
+
+## Tecnologías utilizadas
++ **Vue 3 + Vite** (estructura del frontend)
++ **Tailwind CSS** (diseño y estilos)
++ **Vue Router** (gestión de navegación)
+
+## Funcionalidades
++ Login y Registro con token JWT almacenado en localStorage.
++ Lista de TODOs con prioridad visualmente diferenciada.
++ Edición y eliminación de TODOs solo para usuarios autenticados.
+
+# Autoría
+Irie Yamashita
