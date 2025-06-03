@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed  } from 'vue';
 import { useRouter } from 'vue-router';
+import Header from '../components/Header.vue';
 
 const todos = ref([]);
 const router = useRouter();
@@ -59,6 +60,7 @@ const anarAfegir = () => {
 </script>
 
 <template>
+  <Header></Header>
   <div>
     <h1>TODO List</h1>
     <button  v-if="token" @click="anarAfegir">Afegir TODO</button>

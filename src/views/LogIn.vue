@@ -2,6 +2,7 @@
 <script setup>
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import Header from '../components/Header.vue';
 
     const error = ref(''); 
     const router = useRouter();
@@ -53,6 +54,7 @@
 <template>
 
 <div>
+    <Header></Header>
     <input v-model="nouUser.username" type="text" placeholder="Username" required/>
     <textarea v-model="nouUser.password" placeholder="Password"></textarea>
 

@@ -3,6 +3,7 @@
 <script setup>
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import Header from '../components/Header.vue';
 
     const error = ref(''); 
     const router = useRouter();
@@ -49,6 +50,7 @@
 
 
 <template>
+<Header></Header>
     <!-- v-model perquè la variable 'nouTodo' es vagi actualitzant-->
   <div>
     <input v-model="nouTODO.titol" type="text" placeholder="Títol" @blur="validaTitol" required/>

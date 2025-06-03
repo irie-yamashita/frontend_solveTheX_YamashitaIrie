@@ -25,7 +25,7 @@ const logout = () => {
 
     username.value = ''; 
 
-    router.push('/');
+    router.push('/login');
 };
 
 
@@ -34,9 +34,9 @@ const logout = () => {
 <template>
   <nav>
     <p v-if="username">Benvingut/da, {{ username }}!</p>
-    <button @click="registrar">Registrar-se</button>
-    <button @click="login">Iniciar Sessió</button>
-    <button @click="logout">Log Out</button>
+    <button v-if="!username" @click="registrar">Registrar-se</button>
+    <button v-if="!username" @click="login">Iniciar Sessió</button>
+    <button v-if="username" @click="logout">Log Out</button>
   </nav>
 </template>
 

@@ -39,6 +39,7 @@
 
 
 <template>
+    <Header></Header>
 <div>
     <input v-model="nouUser.username" type="text" placeholder="Username" required/>
     <textarea v-model="nouUser.password" placeholder="Password"></textarea>
