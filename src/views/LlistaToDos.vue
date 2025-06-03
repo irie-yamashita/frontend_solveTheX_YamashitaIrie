@@ -63,7 +63,7 @@ const anarAfegir = () => {
   <Header></Header>
   <div class="container mx-auto py-6 mt-10">
     <div class="flex items-center gap-4">
-      <h1 class="text-left text-3xl font-bold mb-6">TODO List</h1>
+      <h1 class="text-left text-3xl font-bold mb-6">TODOs</h1>
       <span v-if="token" @click="anarAfegir" class="w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer transition-colors bg-gray-300 hover:bg-green-500 text-white mb-4">+</span>
     </div>
     
@@ -86,10 +86,10 @@ const anarAfegir = () => {
           <input type="checkbox" :checked="todo.completat" disabled class="cursor-not-allowed">
         </div>
         <div v-if="token" class="flex justify-end space-x-4 mt-4">
-          <span  v-if="token" @click="preguntarEliminar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-red-500 hover:text-white">Eliminar ToDo</span>
-          <span  v-if="token" @click="anarModificar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-blue-500 hover:text-white">Modificar ToDo</span>
+          <span  v-if="token" @click="preguntarEliminar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-red-500 hover:text-white">Eliminar</span>
+          <span  v-if="token" @click="anarModificar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-blue-500 hover:text-white">Modificar</span>
         </div>
-        
+
       </div>
     </div>
   </div>

@@ -54,8 +54,8 @@
     <!-- v-model perquè la variable 'nouTodo' es vagi actualitzant-->
     <div class="min-h-screen flex flex-col pt-30 items-center bg-gray-100">
 
-        <div class="flex flex-col justify-center bg-gray-100">
-            <h2 class="text-2xl font-semibold text-center mb-4 w-300">Afegir TODO</h2>
+        <div class="flex flex-col justify-center bg-gray-100 w-200">
+            <h2 class="text-2xl font-semibold text-center mb-4">Afegir TODO</h2>
             <input v-model="nouTODO.titol" type="text" placeholder="Títol" @blur="validaTitol" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring focus:ring-blue-200 mb-3"/>
             <textarea v-model="nouTODO.descripcio" placeholder="Descripció" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring focus:ring-blue-200 mb-3"></textarea>
             <select v-model="nouTODO.prioritat" class="w-full px-4 py-2 bg-gray-200 text-gray-700 border border-gray-300 rounded mb-3">

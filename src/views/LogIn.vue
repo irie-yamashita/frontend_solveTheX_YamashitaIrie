@@ -30,7 +30,8 @@
                 const data = await resposta.json();
 
                 if (!resposta.ok) {
-                    error.value = data.error
+                    const data = await resposta.json();
+                    error.value = data.error || 'Error desconegut';
                     return;
                 }
                 error.value = '';

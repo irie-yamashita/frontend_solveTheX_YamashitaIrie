@@ -26,7 +26,15 @@
                     body: JSON.stringify(nouUser.value)
                 });
 
-                //router.push('/'); // tornar a la pàgina principal
+                if(!resposta.ok) {
+                    const data = await resposta.json();
+                    error.value = data.error || 'Error desconegut';
+                    return;
+                } else {
+                    router.push('/'); // tornar a la pàgina principal
+                }
+
+                
             } catch (error) {
                 console.error("Error en registrar l'usuari", error);
             }
