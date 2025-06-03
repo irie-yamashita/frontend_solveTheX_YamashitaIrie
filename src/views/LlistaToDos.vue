@@ -61,12 +61,15 @@ const anarAfegir = () => {
 
 <template>
   <Header></Header>
-  <div class="container mx-auto py-6">
-    <h1 class="text-left text-3xl font-bold mb-6">TODO List</h1>
-    <span v-if="token" @click="anarAfegir" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-green-500 hover:text-white">Afegir TODO</span>
+  <div class="container mx-auto py-6 mt-10">
+    <div class="flex items-center gap-4">
+      <h1 class="text-left text-3xl font-bold mb-6">TODO List</h1>
+      <span v-if="token" @click="anarAfegir" class="w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer transition-colors bg-gray-300 hover:bg-green-500 text-white mb-4">+</span>
+    </div>
+    
 
     <div class="flex flex-wrap gap-6 mt-6">
-      <div v-for="todo in todos" :key="todo.id" class="p-6 bg-gray-100 shadow-lg rounded-lg text-left">
+      <div v-for="todo in todos" :key="todo.id" class="p-6 bg-gray-100 shadow-lg rounded-lg text-left transform transition-transform hover:scale-105">
       <p class="px-3 py-1 rounded text-gray-700 text-sm font-medium mb-5"
            :class="{
              'bg-yellow-200': todo.prioritat === 'baixa',

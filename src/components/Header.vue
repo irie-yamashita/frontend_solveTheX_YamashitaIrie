@@ -38,7 +38,7 @@ const home = () => {
 
 <template>
   <header class="w-full flex items-center justify-between px-6 py-4 bg-gray-100 shadow-md">
-    <img src="" alt="Logo" class="h-10 w-auto cursor-pointer" @click="home">
+    <img src="../../public/check.png" alt="Logo" class="h-10 w-auto cursor-pointer" @click="home">
     <nav class="flex items-center space-x-6">
       <div class="flex space-x-6">
         <span v-if="!username" @click="registrar" class="cursor-pointer hover:text-blue-500 transition">Registrar-se</span>
