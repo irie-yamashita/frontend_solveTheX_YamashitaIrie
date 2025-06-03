@@ -41,9 +41,13 @@
             error.value = 'El títol és un camp obligatori!';
         } else {
             try {
+                const token = localStorage.getItem('token');
                 const resposta = await fetch(`http://localhost:3000/todos/${id}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(nouTODO.value)
                 });
 

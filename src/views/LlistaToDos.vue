@@ -1,9 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed  } from 'vue';
 import { useRouter } from 'vue-router';
 
 const todos = ref([]);
 const router = useRouter();
+
+const token = computed(() => localStorage.getItem('token'));
 
 // Consumeixo API per obtenir tots els TODO's
 const fetchTodos = async () => {
@@ -20,21 +22,31 @@ fetchTodos();
 
 //Funcions
 const preguntarEliminar = (id) => {
-    const eliminar = confirm("Estàs segur/a que vols eliminar el ToDo?");
+  const eliminar = confirm("Estàs segur/a que vols eliminar el ToDo?");
 
-    if(eliminar) {
-        eliminarToDo(id);
-    }
+  if(eliminar) {
+      eliminarToDo(id);
+  }
 };
 
 const eliminarToDo = async (id) => {
-    try { 
-        await fetch(`http://localhost:3000/todos/${id}`, { method: 'DELETE' });
-        todos.value = todos.value.filter(todo => todo.id !== id); //Elimino de la llista el ToDo eliminat
-        console.log("Eliminat!", id);
-    } catch (error) {
-        console.error('Error eliminant el TODO:', error);
-    }
+  try { 
+    const token = localStorage.getItem('token');
+
+    await fetch(`http://localhost:3000/todos/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+
+    });
+    todos.value = todos.value.filter(todo => todo.id !== id); //Elimino de la llista el ToDo eliminat
+    console.log("Eliminat!", id);
+  } catch (error) {
+      console.error('Error eliminant el TODO:', error);
+  }
 }
 
 const anarModificar = (id) => {
@@ -49,7 +61,7 @@ const anarAfegir = () => {
 <template>
   <div>
     <h1>TODO List</h1>
-    <button @click="anarAfegir">Afegir TODO</button>
+    <button  v-if="token" @click="anarAfegir">Afegir TODO</button>
 
     <ul>
       <div v-for="todo in todos" :key="todo.id">
@@ -59,8 +71,8 @@ const anarAfegir = () => {
         <p v-if="todo.completat == 0">Pendent</p>
         <p v-else>Completat</p>
         <p>{{ todo.data_creacio }}</p>
-        <button @click="preguntarEliminar(todo.id)">Eliminar ToDo</button>
-        <button @click="anarModificar(todo.id)">Modificar ToDo</button>
+        <button  v-if="token" @click="preguntarEliminar(todo.id)">Eliminar ToDo</button>
+        <button  v-if="token" @click="anarModificar(todo.id)">Modificar ToDo</button>
       </div>
     </ul>
   </div>

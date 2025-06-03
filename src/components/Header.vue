@@ -25,7 +25,7 @@ const logout = () => {
 
     username.value = ''; 
 
-    router.push('/login');
+    router.push('/');
 };
 
 
