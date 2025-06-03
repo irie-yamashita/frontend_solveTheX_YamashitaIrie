@@ -28,16 +28,28 @@ const logout = () => {
     router.push('/login');
 };
 
+// Funció per tancar sessió
+const home = () => {
+    router.push('/');
+};
+
 
 </script>
 
 <template>
-  <nav>
-    <p v-if="username">Benvingut/da, {{ username }}!</p>
-    <button v-if="!username" @click="registrar">Registrar-se</button>
-    <button v-if="!username" @click="login">Iniciar Sessió</button>
-    <button v-if="username" @click="logout">Log Out</button>
-  </nav>
+  <header class="w-full flex items-center justify-between px-6 py-4 bg-gray-100 shadow-md">
+    <img src="" alt="Logo" class="h-10 w-auto cursor-pointer" @click="home">
+    <nav class="flex items-center space-x-6">
+      <div class="flex space-x-6">
+        <span v-if="!username" @click="registrar" class="cursor-pointer hover:text-blue-500 transition">Registrar-se</span>
+        <span v-if="!username" @click="login" class="cursor-pointer hover:text-blue-500 transition">Iniciar Sessió</span>
+        <span v-if="username" @click="logout" class="cursor-pointer hover:text-red-500 transition">Log Out</span>
+      </div>
+      <p v-if="username" class="font-semibold text-gray-700">Benvingut/da, {{ username }}!</p>
+      
+    </nav>
+  </header>
+  
 </template>
 
 

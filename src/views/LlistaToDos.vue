@@ -61,21 +61,33 @@ const anarAfegir = () => {
 
 <template>
   <Header></Header>
-  <div>
-    <h1>TODO List</h1>
-    <button  v-if="token" @click="anarAfegir">Afegir TODO</button>
+  <div class="container mx-auto py-6">
+    <h1 class="text-left text-3xl font-bold mb-6">TODO List</h1>
+    <span v-if="token" @click="anarAfegir" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-green-500 hover:text-white">Afegir TODO</span>
 
-    <ul>
-      <div v-for="todo in todos" :key="todo.id">
+    <div class="flex flex-wrap gap-6 mt-6">
+      <div v-for="todo in todos" :key="todo.id" class="p-6 bg-gray-100 shadow-lg rounded-lg text-left">
+      <p class="px-3 py-1 rounded text-gray-700 text-sm font-medium mb-5"
+           :class="{
+             'bg-yellow-200': todo.prioritat === 'baixa',
+             'bg-orange-200': todo.prioritat === 'mitjana',
+             'bg-red-200': todo.prioritat === 'alta'
+           }">
+          {{ todo.prioritat }}
+        </p>
         <p><strong>{{ todo.titol }}</strong></p>
         <p>{{ todo.descripcio}}</p>
-        <p>{{ todo.prioritat}}</p>
-        <p v-if="todo.completat == 0">Pendent</p>
-        <p v-else>Completat</p>
-        <p>{{ todo.data_creacio }}</p>
-        <button  v-if="token" @click="preguntarEliminar(todo.id)">Eliminar ToDo</button>
-        <button  v-if="token" @click="anarModificar(todo.id)">Modificar ToDo</button>
+
+        <div class="flex justify-end items-center space-x-2">
+          <label class="text-gray-700">{{ todo.completat ? 'Completat' : 'Pendent' }}</label>
+          <input type="checkbox" :checked="todo.completat" disabled class="cursor-not-allowed">
+        </div>
+        <div v-if="token" class="flex justify-end space-x-4 mt-4">
+          <span  v-if="token" @click="preguntarEliminar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-red-500 hover:text-white">Eliminar ToDo</span>
+          <span  v-if="token" @click="anarModificar(todo.id)" class="px-3 py-2 rounded cursor-pointer transition-colors hover:bg-blue-500 hover:text-white">Modificar ToDo</span>
+        </div>
+        
       </div>
-    </ul>
+    </div>
   </div>
 </template>
